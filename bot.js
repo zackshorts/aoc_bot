@@ -52,12 +52,13 @@ function listen() {
     var stream = T.stream('statuses/filter', {follow: (userID)});
 
     stream.on('tweet', function (tweet) {
-        if (tweet.user.id === userID) {
+        if (tweet.user.id_str === userID) {
             // console.log("this was sent by the user we want to track")
-        } else {
-            let phrase = jumbleText(tweet.text) + ' ' + '@' + tweet.user.screen_name;
+            let phrase = jumbleText(tweet.text);// + ' ' + '@' + tweet.user.screen_name;
             console.log('Found this lil guy: ' + phrase);
             Bot.tweet(phrase)
+        } else {
+            //This is a retweet :)
         }
     });
 }

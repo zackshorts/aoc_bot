@@ -3,7 +3,7 @@ const Twit = require('twit');
 const TwitterBot = require('node-twitterbot').TwitterBot;
 const config = require('./config.js');
 const Bot = new TwitterBot(config);
-const T = new Twit(require(config));
+const T = new Twit(require('./config.js'));
 
 function jumbleText(tweet) {
     let text = tweet.split('');
@@ -27,9 +27,7 @@ function listen() {
             console.log('Found this lil guy: ' + phrase);
             Bot.tweet(phrase)
         } else {
-            let phrase = jumbleText(tweet.text);
             console.log("This is a retweet :) \n" + phrase);
-            Bot.tweet(phrase)
         }
     });
 }

@@ -7,9 +7,9 @@ const T = new Twit(require('./config.js'));
 
 function jumbleText(tweet) {
     let text = tweet.split('');
-    let newTweet = []
+    let newTweet = [];
     for(let letter of text) {
-        if(Math.random() > .5) newTweet.push(letter.toUpperCase())
+        if(Math.random() > .5) newTweet.push(letter.toUpperCase());
         else newTweet.push(letter.toLowerCase());
     }
     return newTweet.join('')
@@ -27,7 +27,7 @@ function listen() {
             console.log('Found this lil guy: ' + phrase);
             Bot.tweet(phrase)
         } else {
-            console.log("This is a retweet :) \n" + phrase);
+            console.log("This is a retweet :)");
         }
     });
 }
